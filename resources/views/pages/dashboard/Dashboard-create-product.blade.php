@@ -2,7 +2,6 @@
 
 
 @section('content')
-<!-- comment -->
 {!! Form::open(['url' => '/product' ,'method' => 'POST', 'enctype' => 'multipart/form-data','files' => 'true']) !!}
 <div class="form-control justify-between flex flex-col p-3 md:p-7 h-auto md:h-screen text-md md:text-lg overflow-y-auto">
   <div class="mx-auto mb-4 font-bold text-2xl">RELEASE A NEW medicine</div>
