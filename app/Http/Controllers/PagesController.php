@@ -27,17 +27,17 @@ class PagesController extends Controller
     public function dashboard()
     {
         $ordersCount = Order::where('status', 1)->get()->count();
-        return view('pages/dashboard/Dashboard', ['ordersCount' => $ordersCount]);
+        return view('pages/dashboard/dashboard', ['ordersCount' => $ordersCount]);
     }
 
     public function dashboardLogin()
     {
-        return view('pages/Dashboard/Dashboard-login');
+        return view('pages/Dashboard/dashboard-login');
     }
     public function createProductPage()
     {
         $categories = Category::select("name")->get();
-        return view('pages/Dashboard/Dashboard-create-product', ['categories' => $categories]);
+        return view('pages/Dashboard/dashboard-create-product', ['categories' => $categories]);
     }
 
     public function dashboardProducts(Request $req)

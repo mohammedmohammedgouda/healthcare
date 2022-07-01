@@ -108,7 +108,7 @@ class ProductsController extends Controller
         }
         $product = Product::find($id);
         if(!$product) abort(404);
-        return view('pages.landpage.productDetails', ['product' => $product , 'addedToCart' => $added]);
+        return view('pages.landpage.productdetails', ['product' => $product , 'addedToCart' => $added]);
     }
 
     public function deleteProduct($id){

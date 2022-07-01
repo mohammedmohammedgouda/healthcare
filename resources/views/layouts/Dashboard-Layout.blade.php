@@ -30,7 +30,7 @@
 
 
     <div class="flex flex-col md:flex-row">
-        @include('inc.Dashboard-sidebar')
+        @include('inc.dashboard-sidebar')
         <div class="w-full md:h-screen opacity-0 overflow-y-auto" id="dashboard-content">
              @yield('content')
         </div>
