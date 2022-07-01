@@ -16,7 +16,7 @@ class PagesController extends Controller
     {
         $categories = Category::orderBy('id', 'desc')->get();
         $latestProducts = Product::orderBy('id', 'desc')->take(6)->get();
-        return view('pages/landpage/home', ['categories' => $categories, 'products' => $latestProducts]);
+        return view('pages.landpage.home', ['categories' => $categories, 'products' => $latestProducts]);
     }
 
     public function signUpPage()
