@@ -20,13 +20,13 @@ class UsersController extends Controller
                 $q->where('name', 'LIKE', "%{$search}%")
                   ->orWhere('email', 'LIKE', "%{$search}%");
             })->orderBy('id', 'DESC')->get();
-       
+
         } else {
             $users = User::orderBy('id', 'DESC')->get();
         }
         return view('pages.dashboard.users', ['users' => $users]);
     }
-    
+
     public function signup(Request $req)
     {
         $req->validate(
@@ -75,11 +75,11 @@ class UsersController extends Controller
             {
                 $rememberMe = $req['rememberMe']?true:false;
                 if($user->blocked){
-                    Session::flash('toast-error', 'sorry you can\'t view your account right now'); 
+                    Session::flash('toast-error', 'sorry you can\'t view your account right now');
                     return back()->withInput();
                 }
                 Auth::login($user, $remember =$rememberMe);
-                Session::flash('toast-info', 'You are logged in'); 
+                Session::flash('toast-info', 'You are logged in');
                 $redirect = $req->input('redirect');
                 if($redirect){
                     return redirect($redirect);
@@ -87,7 +87,7 @@ class UsersController extends Controller
                 return redirect('/');
             }
         }
- 
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->withInput();
@@ -106,13 +106,13 @@ class UsersController extends Controller
         if ($user->blocked) {
             // unblock
             $user->blocked = false;
-            Session::flash('toast-info', $user->name.' is unblocked'); 
+            Session::flash('toast-info', $user->name.' is unblocked');
         }else{
             $user->blocked = true;
-            Session::flash('toast-error', $user->name.' is bolcked'); 
-        
+            Session::flash('toast-error', $user->name.' is bolcked');
+
         }
-    
+
         $user->save();
         return;
     }

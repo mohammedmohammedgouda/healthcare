@@ -32,12 +32,12 @@ class PagesController extends Controller
 
     public function dashboardLogin()
     {
-        return view('pages/Dashboard/dashboard-login');
+        return view('pages/dashboard/dashboard-login');
     }
     public function createProductPage()
     {
         $categories = Category::select("name")->get();
-        return view('pages/Dashboard/dashboard-create-product', ['categories' => $categories]);
+        return view('pages/dashboard/dashboard-create-product', ['categories' => $categories]);
     }
 
     public function dashboardProducts(Request $req)
@@ -46,7 +46,7 @@ class PagesController extends Controller
         $pages = ceil(Product::count() / $per_page);
         $current_page = $req->page;
         $products = Product::orderBy('id', 'desc')->paginate($per_page);
-        return view('pages.Dashboard.Dashboard-products', [
+        return view('pages.dashboard.dashboard-products', [
             'products' => $products,
             'pages' => $pages,
             'current_page' => $current_page
